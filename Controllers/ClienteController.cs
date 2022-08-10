@@ -48,17 +48,17 @@ namespace back.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> editar(int id, Cliente cliente)
         {
-            var dados = await db.clientes.FindAsync(id);
-            if (dados is null)
+            var old = await db.clientes.FindAsync(id);
+            if (old is null)
             {
                 return NotFound();
             }
             else
             {
-                dados.Nome = cliente.Nome;
-                dados.Telefone = cliente.Telefone;
-                dados.Email = cliente.Email;
-                dados.Cep = cliente.Cep;
+                old.Nome = cliente.Nome;
+                old.Telefone = cliente.Telefone;
+                old.Email = cliente.Email;
+                old.Cep = cliente.Cep;
                 int i = await db.SaveChangesAsync();
                 return Ok(i);
             }

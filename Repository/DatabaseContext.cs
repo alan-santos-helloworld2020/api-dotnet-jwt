@@ -7,5 +7,6 @@ public class DatabaseContext:DbContext
     public DbSet<User> users {get;set;}
     public DbSet<Cliente> clientes {get;set;}
     public DbSet<Loja> lojas {get;set;}
+    public DbSet<Fornecedor> fornecedores {get;set;}
 
 }

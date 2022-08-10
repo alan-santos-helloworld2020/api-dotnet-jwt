@@ -9,9 +9,11 @@ namespace back.Models
         [Required]
         public String Telefone {get;set;}
         [Required]
+        [EmailAddress]
         public String Email {get;set;}
         [Required]
         public String Cep {get;set;}
+        public ICollection<Fornecedor> Fornecedores {get;set;}
         public ICollection<Cliente> Clientes {get;set;}
     }
     

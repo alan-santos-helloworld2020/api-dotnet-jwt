@@ -1,3 +1,4 @@
+using back.HashConfiguration;
 using back.Models;
 using back.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -43,6 +44,26 @@ public class LojaController : ControllerBase
         await db.AddAsync(loja);
         int i = await db.SaveChangesAsync();
         return Ok(i);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> update(int id,Loja loja)
+    {
+        HashConfig hash = new HashConfig();
+        var old = await db.lojas.FindAsync(id);
+        if (old is null)
+        {
+            return NotFound();
+        }
+        else
+        {
+            old.Nome = loja.Nome;
+            old.Email = loja.Email;
+            old.Telefone = loja.Telefone;
+            old.Cep = loja.Cep;
+            int i = await db.SaveChangesAsync();
+            return Ok(i);
+        }
     }
 
     [HttpDelete("{id}")]

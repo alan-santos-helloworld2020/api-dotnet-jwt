@@ -11,9 +11,11 @@ public class Cliente
     [Required]
     public string Telefone { get; set; }
     [Required]
+    [EmailAddress]
     public string Email { get; set; }
     [Required]
     public string Cep { get; set; }
+    [Required]
     public int LojaId { get; set; }
     public Loja Loja { get; set; }
 }
