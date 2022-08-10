@@ -5,6 +5,8 @@ using back.HashConfiguration;
 
 namespace back.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class LoginController : ControllerBase
     {
         private readonly DatabaseContext db;
@@ -12,9 +14,9 @@ namespace back.Controllers
         {
             db = Userdb;
         }
-        
+
         [HttpPost]
-        [Route("api/auth/register")]
+        [Route("/register")]
         public async Task<IActionResult> save(User user)
         {
             HashConfig hash = new HashConfig();
@@ -26,7 +28,7 @@ namespace back.Controllers
         }
 
         [HttpPost]
-        [Route("api/auth/login")]
+        [Route("/login")]
         public async Task<IActionResult> login(User user)
         {
             HashConfig hash = new HashConfig();
@@ -37,7 +39,7 @@ namespace back.Controllers
             }
             else
             {
-                if (hash.decodePassword(user,login.Password))
+                if (hash.decodePassword(user, login.Password))
                 {
                     return Ok(login);
                 }

@@ -10,7 +10,7 @@ using back.Repository;
 namespace back.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class ClienteContextModelSnapshot : ModelSnapshot
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace back.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("LojaId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -44,7 +47,39 @@ namespace back.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("LojaId");
+
                     b.ToTable("clientes");
+                });
+
+            modelBuilder.Entity("back.Models.Loja", b =>
+                {
+                    b.Property<int>("LojaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LojaId");
+
+                    b.ToTable("lojas");
                 });
 
             modelBuilder.Entity("back.Models.User", b =>
@@ -68,6 +103,22 @@ namespace back.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
+                });
+
+            modelBuilder.Entity("back.Models.Cliente", b =>
+                {
+                    b.HasOne("back.Models.Loja", "Loja")
+                        .WithMany("Clientes")
+                        .HasForeignKey("LojaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Loja");
+                });
+
+            modelBuilder.Entity("back.Models.Loja", b =>
+                {
+                    b.Navigation("Clientes");
                 });
 #pragma warning restore 612, 618
         }

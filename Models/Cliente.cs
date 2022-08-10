@@ -14,5 +14,7 @@ public class Cliente
     public string Email { get; set; }
     [Required]
     public string Cep { get; set; }
+    public int LojaId { get; set; }
+    public Loja Loja { get; set; }
 }
 
