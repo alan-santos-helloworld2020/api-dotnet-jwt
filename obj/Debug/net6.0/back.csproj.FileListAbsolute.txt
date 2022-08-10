@@ -53,3 +53,11 @@
 /home/alan/Documentos/projetos/dotnet/back/obj/Debug/net6.0/back.genruntimeconfig.cache
 /home/alan/Documentos/projetos/dotnet/back/obj/Debug/net6.0/ref/back.dll
 /home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/BCrypt.Net-Next.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/home/alan/Documentos/projetos/dotnet/back/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll

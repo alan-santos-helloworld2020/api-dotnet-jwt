@@ -2,10 +2,12 @@ using Microsoft.AspNetCore.Mvc;
 using back.Repository;
 using back.Models;
 using back.HashConfiguration;
+using Microsoft.AspNetCore.Authorization;
 namespace back.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Roles = "Admin")]
 public class UserController : ControllerBase
 {
     private readonly DatabaseContext db;
@@ -19,7 +21,7 @@ public class UserController : ControllerBase
     public async Task<IActionResult> findAll()
     {
         var users = db.users.ToList();
-        return  Ok(users);
+        return Ok(users);
     }
 
     [HttpGet("{id}")]

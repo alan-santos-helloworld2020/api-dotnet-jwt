@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using back.Repository;
 using back.Models;
 using back.HashConfiguration;
+using back.Utils;
+using back.TokenConfiguration;
 
 namespace back.Controllers
 {
@@ -35,17 +37,22 @@ namespace back.Controllers
             var login = db.users.Where(u => u.Email == user.Email).FirstOrDefault();
             if (login is null)
             {
-                return NotFound();
+                return BadRequest();
             }
             else
             {
                 if (hash.decodePassword(user, login.Password))
                 {
-                    return Ok(login);
+                    JwtService jwt = new JwtService();
+                    UserLoged userloged = new UserLoged();
+                    userloged.Username = login.Username;
+                    userloged.Email = login.Email;
+                    userloged.token = jwt.GeneratedToken(login);
+                    return Ok(userloged);
                 }
                 else
                 {
-                    return NotFound();
+                    return BadRequest();
                 }
             }
 
